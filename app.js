@@ -21,7 +21,7 @@
         }
     };
 
-    var app = new Vue({
+    new Vue({
         el: '#app',
         data: {
             consoleHTML: '',
@@ -72,7 +72,7 @@
                 const command = this.rowContent.toLowerCase();
                 if (ALLOW_COMMANDS.indexOf(command) !== -1) {
                     this.addToHtml(templates.commands[command])
-                } else if (command.length !== 0){
+                } else if (command.length !== 0) {
                     this.addToHtml(templates.commands.notFound);
                 } else {
                     this.addToHtml('<br>');
@@ -85,24 +85,18 @@
             this.newLine();
 
             ALLOW_COMMANDS.forEach(function (item) {
-                for (var i = 0; i < item.length; i++) {
-                    self.addToHtml(item[i]);
-                }
+                self.addToHtml(item);
                 self.addToHtml(templates.commands[item]);
                 self.newLine();
             });
 
-            var md = new MobileDetect(window.navigator.userAgent);
-            if (md.mobile()) {
+            if ((new MobileDetect(window.navigator.userAgent)).mobile()) {
                 setTimeout(function () {
                     document.getElementById('mobile-text').style.display = "block";
                 }, 100);
             }
 
             window.addEventListener('keydown', this.onKey);
-        },
-        beforeDestroy: function () {
-            window.removeEventListener('keydown', this.onKey);
         }
     });
 })();
