@@ -27,7 +27,7 @@
             consoleHTML: '',
             readyToInput: false,
             rowContent: '',
-            renderComponent: false
+            scrollEnabled: false
         },
         methods: {
             onKey: function (e) {
@@ -46,9 +46,12 @@
             },
             addToHtml: function (text) {
                 this.consoleHTML += text;
-                scrollBottom();
+
+                if (this.scrollEnabled) {
+                    scrollBottom();
+                }
             },
-            addToCommand: function (text, del) {
+            addToCommand: function (text) {
                 this.rowContent += text;
             },
             clearCommand: function () {
@@ -64,8 +67,8 @@
                 this.rowContent = this.rowContent.substring(0, this.rowContent.length - 1);
                 this.consoleHTML = this.consoleHTML.substring(0, this.consoleHTML.length - 1);
             },
-            newLine: function () {
-                this.addToHtml(templates.login);
+            newLine: function (silent) {
+                this.addToHtml(templates.login, silent);
                 this.clearCommand();
             },
             handleCommand: function () {
@@ -89,6 +92,8 @@
                 self.addToHtml(templates.commands[item]);
                 self.newLine();
             });
+
+            this.scrollEnabled = true;
 
             if ((new MobileDetect(window.navigator.userAgent)).mobile()) {
                 setTimeout(function () {
