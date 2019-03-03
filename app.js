@@ -45,7 +45,6 @@
                 }
             },
             addToHtml: function (text) {
-                console.log(text);
                 this.consoleHTML += text;
                 scrollBottom();
             },
@@ -73,8 +72,10 @@
                 const command = this.rowContent.toLowerCase();
                 if (ALLOW_COMMANDS.indexOf(command) !== -1) {
                     this.addToHtml(templates.commands[command])
-                } else {
+                } else if (command.length !== 0){
                     this.addToHtml(templates.commands.notFound);
+                } else {
+                    this.addToHtml('<br>');
                 }
             }
         },
@@ -94,7 +95,7 @@
             var md = new MobileDetect(window.navigator.userAgent);
             if (md.mobile()) {
                 setTimeout(function () {
-                    document.getElementById('mobile-text').style.visibility = "visible";
+                    document.getElementById('mobile-text').style.display = "block";
                 }, 100);
             }
 
