@@ -105,7 +105,6 @@
 <body>
 <div id="app">
     <span id="console" v-html="consoleHTML"></span>
-    <input type="text" id="mobile-input">
 </div>
 <template id="template-init">
     Login as: guest
@@ -117,8 +116,10 @@
 /_/   \_\_|\___/_/\_\_|\_\___/| .__/ \__\___|_|\___/ \_/
                               |_|
 </pre>
-    Welcome to <span class="red">Alex Koptelov</span> website<br/><br/>
-    Allowed commands:
+    <div>
+        Welcome to <span class="red">Alex Koptelov</span> website
+    </div>
+    <div class="red" id="mobile-text">Login from PC to use the interactive version</div>
 </template>
 <template id="template-new-line">
     <span class="teal">guest</span>@<span class="green">koptelovav.github.io:</span><span class="yellow">~</span>$
@@ -138,7 +139,6 @@
         <dt>contact</dt>
         <dd>get in touch</dd>
     </dl>
-    <div class="red" id="mobile-text">Login from PC to use the interactive version</div>
 </template>
 <template id="template-command-info">
     <div>

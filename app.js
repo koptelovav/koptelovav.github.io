@@ -5,7 +5,7 @@
         }, 100);
     };
 
-    const ALLOW_COMMANDS = ['help', 'info', 'skills', 'cv', 'photo', 'contact'];
+    const ALLOW_COMMANDS = ['help', 'photo', 'info', 'skills', 'cv', 'contact'];
 
     const templates = {
         init: document.getElementById('template-init').innerHTML,
@@ -26,7 +26,8 @@
         data: {
             consoleHTML: '',
             readyToInput: false,
-            rowContent: ''
+            rowContent: '',
+            renderComponent: false
         },
         methods: {
             onKey: function (e) {
@@ -44,6 +45,7 @@
                 }
             },
             addToHtml: function (text) {
+                console.log(text);
                 this.consoleHTML += text;
                 scrollBottom();
             },
@@ -77,33 +79,17 @@
             }
         },
         created: function () {
-            window.addEventListener('keydown', this.onKey);
+            const self = this;
             this.addToHtml(templates.init);
             this.newLine();
 
-            this.addToHtml('help');
-            this.addToHtml(templates.commands.help);
-            this.newLine();
-
-            this.addToHtml('photo');
-            this.addToHtml(templates.commands.photo);
-            this.newLine();
-
-            this.addToHtml('info');
-            this.addToHtml(templates.commands.info);
-            this.newLine();
-
-            this.addToHtml('skills');
-            this.addToHtml(templates.commands.skills);
-            this.newLine();
-
-            this.addToHtml('cv');
-            this.addToHtml(templates.commands.cv);
-            this.newLine();
-
-            this.addToHtml('contact');
-            this.addToHtml(templates.commands.contact);
-            this.newLine();
+            ALLOW_COMMANDS.forEach(function (item) {
+                for (var i = 0; i < item.length; i++) {
+                    self.addToHtml(item[i]);
+                }
+                self.addToHtml(templates.commands[item]);
+                self.newLine();
+            });
 
             var md = new MobileDetect(window.navigator.userAgent);
             if (md.mobile()) {
@@ -111,6 +97,8 @@
                     document.getElementById('mobile-text').style.visibility = "visible";
                 }, 100);
             }
+
+            window.addEventListener('keydown', this.onKey);
         },
         beforeDestroy: function () {
             window.removeEventListener('keydown', this.onKey);
