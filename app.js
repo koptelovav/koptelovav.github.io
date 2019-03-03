@@ -1,8 +1,8 @@
 (function () {
     const scrollBottom = function () {
-        // setTimeout(function () {
-        //     window.scrollTo(0, document.body.scrollHeight);
-        // }, 100);
+        setTimeout(function () {
+            window.scrollTo(0, document.body.scrollHeight);
+        }, 100);
     };
 
     const ALLOW_COMMANDS = ['help', 'info', 'skills', 'cv', 'photo', 'contact'];
