@@ -4,9 +4,7 @@
             window.scrollTo(0, document.body.scrollHeight);
         }, 100);
     };
-
     const ALLOW_COMMANDS = ['help', 'photo', 'info', 'skills', 'cv', 'contact'];
-
     const templates = {
         init: document.getElementById('template-init').innerHTML,
         login: document.getElementById('template-new-line').innerHTML,
@@ -46,7 +44,6 @@
             },
             addToHtml: function (text) {
                 this.consoleHTML += text;
-
                 if (this.scrollEnabled) {
                     scrollBottom();
                 }
@@ -100,7 +97,6 @@
                     document.getElementById('mobile-text').style.display = "block";
                 }, 100);
             }
-
             window.addEventListener('keydown', this.onKey);
         }
     });
