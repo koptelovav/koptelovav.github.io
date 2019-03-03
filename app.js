@@ -79,31 +79,34 @@
         created: function () {
             window.addEventListener('keydown', this.onKey);
             this.addToHtml(templates.init);
+            this.newLine();
+
+            this.addToHtml('help');
             this.addToHtml(templates.commands.help);
+            this.newLine();
+
+            this.addToHtml('photo');
+            this.addToHtml(templates.commands.photo);
+            this.newLine();
+
+            this.addToHtml('info');
+            this.addToHtml(templates.commands.info);
+            this.newLine();
+
+            this.addToHtml('skills');
+            this.addToHtml(templates.commands.skills);
+            this.newLine();
+
+            this.addToHtml('cv');
+            this.addToHtml(templates.commands.cv);
+            this.newLine();
+
+            this.addToHtml('contact');
+            this.addToHtml(templates.commands.contact);
             this.newLine();
 
             var md = new MobileDetect(window.navigator.userAgent);
             if (md.mobile()) {
-                this.addToHtml('photo');
-                this.addToHtml(templates.commands.photo);
-                this.newLine();
-
-                this.addToHtml('info');
-                this.addToHtml(templates.commands.info);
-                this.newLine();
-
-                this.addToHtml('skills');
-                this.addToHtml(templates.commands.skills);
-                this.newLine();
-
-                this.addToHtml('cv');
-                this.addToHtml(templates.commands.cv);
-                this.newLine();
-
-                this.addToHtml('contact');
-                this.addToHtml(templates.commands.contact);
-                this.newLine();
-
                 setTimeout(function () {
                     document.getElementById('mobile-text').style.visibility = "visible";
                 }, 100);
