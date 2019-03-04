@@ -4,7 +4,7 @@
             window.scrollTo(0, document.body.scrollHeight);
         }, 100);
     };
-    const ALLOW_COMMANDS = ['help', 'photo', 'info', 'skills', 'cv', 'contact'];
+    const ALLOW_COMMANDS = ['help', 'cv', 'photo', 'info', 'skills', 'contact'];
     const templates = {
         init: document.getElementById('template-init').innerHTML,
         login: document.getElementById('template-new-line').innerHTML,
