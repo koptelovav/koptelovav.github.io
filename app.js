@@ -95,7 +95,7 @@
             if ((new MobileDetect(window.navigator.userAgent)).mobile()) {
                 setTimeout(function () {
                     document.getElementById('mobile-text').style.display = "block";
-                }, 100);
+                }, 200);
             }
             window.addEventListener('keydown', this.onKey);
         }
